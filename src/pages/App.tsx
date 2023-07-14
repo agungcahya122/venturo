@@ -14,13 +14,11 @@ const App = () => {
 
   const [menus, setMenus] = useState<Menus[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
-
-  const [modal, setModal] = useState<string>("modal");
+  const [modal, setModal] = useState<string>("hidden");
 
   const openModal = () => {
-    setModal("modal-open");
+    setModal("");
   }
-
 
   useEffect(() => {
     fetchData();
@@ -45,8 +43,8 @@ const App = () => {
   return (
     < Layout >
       {/* Navbar */}
-      <div className='bg-zinc-100 '>
-        <div className={'navbar bg-zinc-100 pt-5 px-12 fixed top-0 z-50 transition '}>
+      <div className='bg-zinc-100 z-10'>
+        <div className={'navbar bg-zinc-100 pt-5 px-12 fixed top-0 z-50 transition'}>
           <div className="navbar-start">
             <div className="flex items-center gap-2">
               <PiCookingPot className="w-6 h-6 text-sky-500" />
@@ -55,7 +53,7 @@ const App = () => {
           </div>
 
           <div className={`navbar-end`}>
-            <div onClick={() => openModal()} className={`flex modal${modal} relative bg-zin-100 border-2 border-sky-400 px-6 py-2 items-center`}>
+            <div onClick={() => openModal()} className={`flex relative bg-zinc-100 border-2 border-sky-400 px-6 py-2 items-center`}>
               <div className="absolute -top-3 -right-3 bg-red-600 rounded-full px-2 py-0">
                 <p className="border-none text-zinc-50">{9}</p>
               </div>
@@ -83,7 +81,7 @@ const App = () => {
         </div>
       </div>
 
-      <div id="modal-login" className={`modal ${modal}`}>
+      {/* <div id="modal-login" className={`modal ${modal}`}>
         <div className="modal-box max-w-full bg-white shadow-xl w-5/12">
           <div
             onClick={() => setModal("modal")}
@@ -95,6 +93,17 @@ const App = () => {
           </div>
           <Modal />
         </div>
+      </div> */}
+
+      <div className={`relative z-50 w-screen h-screen bg-zinc-500/50 ${modal}`}>
+        <div className='top-0 left-0 bg-white'>
+          <p>test</p>
+          <div onClick={() => setModal('hidden')}>
+            x
+          </div>
+        </div>
+
+
       </div>
 
     </ Layout >

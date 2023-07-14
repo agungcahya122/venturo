@@ -12,12 +12,12 @@ interface CardProps {
 const Card: FC<CardProps> = ({ image, type, price, name }) => {
   return (
     <div className="card h-auto card-compact bg-bgCard bg-white rounded-md shadow-xl">
-      <div className="h-44 w-full bg-center bg-cover bg-no-repeat p-2" style={{ backgroundImage: `url(${image})` }}>
-        {/* <img
+      <div className="overflow-hidden w-full bg-center bg-cover bg-no-repeat p-2" >
+        <img
           src={image}
           alt="logo.svg"
-          className=" "
-        /> */}
+          className="object-contain h-40 object-center w-full"
+        />
       </div>
       <div className="card-body p-2">
         <p className="card-title text-zinc-900 font-semibold text-[16px]">
@@ -28,11 +28,9 @@ const Card: FC<CardProps> = ({ image, type, price, name }) => {
           <CustomButton
             size="full"
             id="btn-card"
-            label="Tambahkan ke Keranjang"
-          // onClick={onClickCart}
+            label="+ Tambahkan ke Keranjang"
           />
         </div>
-        {/* <p className="text-[16px] text-color4 mt-1 pb-4 font-semibold">{`Stok : ${stock}`}</p> */}
       </div>
     </div>
   );

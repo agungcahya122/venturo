@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 
 import CustomButton from "./cutomButton";
 
@@ -10,10 +10,7 @@ interface CardProps {
   handleData?: () => void;
 }
 
-const Card: FC<CardProps> = ({ image, price, name, Data, handleData }) => {
-
-
-  // console.log(Data)
+const Card: FC<CardProps> = ({ image, price, name, handleData }) => {
 
   return (
     <div className="card h-auto card-compact bg-bgCard bg-white rounded-md shadow-xl">

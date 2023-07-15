@@ -10,17 +10,17 @@ import { Menus } from "../utils/types/TypeData";
 import Home from "../pages/Home";
 
 const App = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    const getDatas = localStorage.getItem("Datas");
+  // useEffect(() => {
+  //   const getDatas = localStorage.getItem("Datas");
 
-    if (getDatas) {
-      dispatch(setMenus(JSON.parse(getDatas)));
-    }
-  }, [])
+  //   if (getDatas) {
+  //     dispatch(setMenus(JSON.parse(getDatas)));
+  //   }
+  // }, [])
 
-  console.log(dispatch)
+  // console.log(dispatch)
 
   return (
     <BrowserRouter>

@@ -1,11 +1,29 @@
-import React, { FC } from 'react'
+import { useEffect, useState } from 'react'
 
 import { PiCookingPot } from 'react-icons/pi'
 import { GrFormClose } from 'react-icons/gr'
 import { BiMinus } from 'react-icons/bi'
 import { BsPlus } from 'react-icons/bs'
+import { Menus } from '../utils/types/TypeData'
 
 const Modal = () => {
+  const [menu, setMenu] = useState<Menus[]>([])
+  const [loading, setLoading] = useState<boolean>(false);
+
+
+  useEffect(() => {
+    fetchData();
+  }, [])
+
+  function fetchData() {
+    const getData = localStorage.getItem("Datas");
+    if (getData) {
+      setMenu(JSON.parse(getData));
+    }
+    setLoading(false);
+  }
+  console.log(menu)
+
   return (
     <>
       <div className='flex justify-between px-7 pt-5 pb-2 border-b '>

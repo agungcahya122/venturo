@@ -16,7 +16,7 @@ const Card: FC<CardProps> = ({ image, type, price, name }) => {
         <img
           src={image}
           alt="logo.svg"
-          className="object-contain h-40 object-center w-full"
+          className="object-contain h-40 object-center w-full my-2"
         />
       </div>
       <div className="card-body p-2">

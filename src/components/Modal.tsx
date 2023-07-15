@@ -1,19 +1,11 @@
 import React, { FC } from 'react'
 
-import CustomButton from './cutomButton';
-
 import { PiCookingPot } from 'react-icons/pi'
 import { GrFormClose } from 'react-icons/gr'
 import { BiMinus } from 'react-icons/bi'
 import { BsPlus } from 'react-icons/bs'
 
-interface modalProps {
-  image?: any;
-  name?: string;
-  price?: number;
-}
-
-const Modal: FC<modalProps> = ({ image, name, price }) => {
+const Modal = () => {
   return (
     <>
       <div className='flex justify-between px-7 pt-5 pb-2 border-b '>
@@ -39,7 +31,7 @@ const Modal: FC<modalProps> = ({ image, name, price }) => {
             <p className='text-[14px] font-[500]'>{`Nasi Lalapan Ayam Bakar`}</p>
             <p className=' text-sky-500'>{`Rp. 12000`}</p>
             <div className='flex w-full gap-4'>
-              <p className='text-[12px] max-w-[8.5rem] mt-2 pl-1 break-words'>{`mantappppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp`}</p>
+              <p className='text-[12px] w-[8.5rem] mt-2 pl-1 break-words'>{`mantap`}</p>
 
               <div className='pt-2'>
                 <div className="flex flex-row">

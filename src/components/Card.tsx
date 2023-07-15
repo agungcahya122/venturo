@@ -4,12 +4,17 @@ import CustomButton from "./cutomButton";
 
 interface CardProps {
   image?: any;
-  type?: string;
   price?: number;
   name?: string;
+  Data?: any;
+  handleData?: () => void;
 }
 
-const Card: FC<CardProps> = ({ image, type, price, name }) => {
+const Card: FC<CardProps> = ({ image, price, name, Data, handleData }) => {
+
+
+  // console.log(Data)
+
   return (
     <div className="card h-auto card-compact bg-bgCard bg-white rounded-md shadow-xl">
       <div className="overflow-hidden w-full bg-center bg-cover bg-no-repeat p-2" >
@@ -29,6 +34,7 @@ const Card: FC<CardProps> = ({ image, type, price, name }) => {
             size="full"
             id="btn-card"
             label="+ Tambahkan ke Keranjang"
+            onClick={handleData}
           />
         </div>
       </div>

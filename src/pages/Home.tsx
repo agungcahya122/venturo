@@ -8,10 +8,11 @@ import Layout from '../components/Layout'
 import Modal from '../components/Modal'
 import Card from '../components/Card'
 
-const App = () => {
+const Home = () => {
 
   const [menus, setMenus] = useState<Menus[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
+  const [menu, setMenu] = useState<any>();
 
   useEffect(() => {
     fetchData();
@@ -33,6 +34,11 @@ const App = () => {
       .finally(() => setLoading(false));
   }
 
+  const handleData = (item: Menus) => {
+    setMenu(item)
+
+    localStorage.setItem("Datas", JSON.stringify(item));
+  }
 
   return (
     <Layout>
@@ -46,6 +52,7 @@ const App = () => {
             image={item.gambar}
             name={item.nama}
             price={item.harga}
+            handleData={() => handleData(item)}
           />
         ))}
       </div>
@@ -55,4 +62,4 @@ const App = () => {
   )
 }
 
-export default App
+export default Home

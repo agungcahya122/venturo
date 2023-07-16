@@ -1,9 +1,12 @@
-import { toast, ToastContainer } from 'react-toastify';
 import { useEffect, useState } from 'react'
-import "react-toastify/dist/ReactToastify.css";
+import { useDispatch } from 'react-redux';
 import axios from 'axios'
 
+import { setMenus } from '../utils/redux/reducers/reducer';
 import { Menus } from '../utils/types/TypeData'
+
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 import Loading from '../components/Loading';
 import Navbar from '../components/Navbar'
@@ -11,8 +14,8 @@ import Layout from '../components/Layout'
 import Card from '../components/Card'
 
 const Home = () => {
-
-  const [menus, setMenus] = useState<Menus[]>([]);
+  const dispatch = useDispatch();
+  const [allMenu, setAllMenu] = useState<Menus[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
@@ -20,14 +23,13 @@ const Home = () => {
   }, [])
 
   function fetchData() {
-
     setLoading(true);
     axios
       .get(
         `https://tes-mobile.landa.id/api/menus`
       )
       .then((res) => {
-        setMenus(res.data.datas);
+        setAllMenu(res.data.datas);
       })
 
       .catch((err) => {
@@ -36,7 +38,7 @@ const Home = () => {
       .finally(() =>
         setTimeout(() => {
           setLoading(false)
-        }, 1000)
+        }, 500)
       )
   }
 
@@ -46,15 +48,15 @@ const Home = () => {
     if (checkExist) {
       let parseMenu: Menus[] = JSON.parse(checkExist);
       parseMenu.push(item);
-      localStorage.setItem("Datas", JSON.stringify(parseMenu))
+      localStorage.setItem("Datas", JSON.stringify(parseMenu));
+      dispatch(setMenus(parseMenu));
     } else {
       localStorage.setItem("Datas", JSON.stringify([item]))
+      dispatch(setMenus([item]))
     }
-
     toast.success('Berhasil menambahkan menu', {
       position: toast.POSITION.TOP_LEFT
     });
-
     setLoading(false)
   }
 
@@ -66,7 +68,7 @@ const Home = () => {
       ) : (
         <>
           <div className='grid grid-cols-5 gap-5 space-x-2 mt-36 px-12 '>
-            {menus.map((item, index) => (
+            {allMenu.map((item, index) => (
               <Card
                 key={index}
                 image={item.gambar}

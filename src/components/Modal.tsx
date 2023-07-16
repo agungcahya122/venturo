@@ -1,28 +1,30 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { PiCookingPot } from 'react-icons/pi'
 import { GrFormClose } from 'react-icons/gr'
 import { BiMinus } from 'react-icons/bi'
 import { BsPlus } from 'react-icons/bs'
+
+import { RootState } from '../utils/types/redux'
 import { Menus } from '../utils/types/TypeData'
+import { setMenus } from '../utils/redux/reducers/reducer'
 
 const Modal = () => {
-  const [menu, setMenu] = useState<Menus[]>([])
+  const dispatch = useDispatch();
+  const datas = useSelector((state: RootState) => state.data.menus);
+
   const [loading, setLoading] = useState<boolean>(false);
 
 
-  useEffect(() => {
-    fetchData();
-  }, [])
+  // const removeData = (item: Menus) => {
+  //   let dupeData: Menus[] = item.slice();
+  //   const filterMenu = dupeData.filter((value) => value.id !== item.id)
+  //   localStorage.setItem("Datas", filterMenu);
+  //   dispatch(setMenus(filterMenu));
+  // }
 
-  function fetchData() {
-    const getData = localStorage.getItem("Datas");
-    if (getData) {
-      setMenu(JSON.parse(getData));
-    }
-    setLoading(false);
-  }
-  console.log(menu)
+  console.log(datas)
 
   return (
     <>

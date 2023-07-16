@@ -1,7 +1,10 @@
-import { PiCookingPot } from 'react-icons/pi'
-import { MdOutlineShoppingCart } from "react-icons/md"
-import Modal from './Modal';
+import { UseSelector, useSelector } from "react-redux/es/hooks/useSelector";
 
+import { MdOutlineShoppingCart } from "react-icons/md"
+import { PiCookingPot } from 'react-icons/pi'
+
+import Modal from './Modal';
+import { RootState } from "../utils/types/redux";
 
 declare global {
   interface Window {
@@ -10,6 +13,8 @@ declare global {
 }
 
 const Navbar = () => {
+
+  const datas = useSelector((state: RootState) => state.data.menus);
 
   return (
     <div className={'navbar bg-zinc-100 pt-8 pb-4 px-12 fixed top-0 z-50 transition '}>
@@ -23,7 +28,7 @@ const Navbar = () => {
       <div className={`navbar-end`}>
         <div onClick={() => window.my_modal_2.showModal()} className='flex relative bg-zin-100 border-2 border-sky-400 px-6 py-2 items-center hover:cursor-pointer'>
           <div className="absolute -top-3 -right-3 bg-red-600 rounded-full px-2 py-0">
-            <p className="border-none text-zinc-50">{9}</p>
+            <p className="border-none text-zinc-50">{datas.length}</p>
           </div>
           <div className="tooltip tooltip-bottom tooltip-accent " data-tip="Keranjang">
             <div className="indicator flex items-center ">

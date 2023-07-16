@@ -2,16 +2,16 @@ import { createSlice } from "@reduxjs/toolkit";
 
 import { Menus } from "../../types/TypeData";
 
-const initialState: StateType = {
-  menus: [],
-};
-
 interface StateType {
   menus: Menus[];
 }
 
+const initialState: StateType = {
+  menus: [],
+};
+
 const SliceState = createSlice({
-  name: "datas",
+  name: "state",
   initialState: initialState,
   reducers: {
     setMenus: (state, action) => {
